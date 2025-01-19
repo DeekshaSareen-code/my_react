@@ -1,21 +1,21 @@
 // @ts-nocheck
-/*
-  <div id="parent">
-    <div id="child">
-        <h1>Child</h1>
-    </div>
-  </div>
-*/
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-// @ts-ignore
-const parent = React.createElement(
-  "div",
-  { id: "parent" },
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "Child"),
-    React.createElement("h2", {}, "Child2"),
-  ])
+const heading = React.createElement("h1", { id: "heading" }, "Namaste React");
+
+const Title = () => {
+  return <h1>Namaste React</h1>;
+};
+const HeadingComponent = () => (
+  <div>
+    <Title />
+    <h1 id="heading">Main Heading</h1>
+    <p>This is a simple React component.</p>
+    <button onClick={() => console.log("Button clicked!")}>Click Me</button>
+  </div>
 );
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(parent);
+
+root.render(<HeadingComponent />);
