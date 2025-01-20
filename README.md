@@ -1,6 +1,6 @@
 # my_react
 
-# Parcel
+## Parcel
 
 - Dev Build
 - Local Server
@@ -16,3 +16,10 @@
 - Tree Shaking - remove unused code
 - HTTPs
 - Different dev and production builds
+
+## React Hooks
+
+(Normal JS utility function)
+
+- useState() - Superpowerful state Variables in react
+- useEffect()
