@@ -8,3 +8,5 @@ export const IMG_CDN_URL = `https://media-assets.swiggy.com/swiggy/image/upload/
 
 // Swiggy Restaurant Path
 export const SWIGGY_REST_API_PATH = `data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants`;
+
+export const MENU_DELHI_API = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6139298&lng=77.2088282&restaurantId=545333&submitAction=ENTER`;

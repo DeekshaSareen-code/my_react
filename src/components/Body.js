@@ -4,6 +4,7 @@ import stays from "../utils/mockData";
 import { useEffect, useState } from "react";
 import { SWIGGY_API_URL, SWIGGY_REST_API_PATH } from "../utils/constants";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurant] = useState([]);
   const [filteredRestaurants, setFilteredRestaurant] = useState([]);
@@ -15,15 +16,16 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.385044&lng=78.486671&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.6139298&lng=77.2088282&carousel=true&third_party_vendor=1"
     );
-    const json = await data.json();
+    console.log(data);
 
+    const json = await data.json();
     setListOfRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -66,7 +68,12 @@ const Body = () => {
       </div>
       <div className="property-container">
         {filteredRestaurants.map((restaurant) => (
-          <PropertyCard resData={restaurant?.info} key={restaurant?.info?.id} />
+          <Link
+            to={"/restaurant/" + restaurant.info.id}
+            key={restaurant?.info?.id}
+          >
+            <PropertyCard resData={restaurant?.info} />
+          </Link>
         ))}
       </div>
     </div>
