@@ -1,25 +1,11 @@
 // @ts-nocheck
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
   const { restaurantId } = useParams();
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6139298&lng=77.2088282&submitAction=ENTER&restaurantId=" +
-        restaurantId
-    );
-    const json = await data.json();
-    console.log(json);
-    setResInfo(json.data);
-  };
+  const resInfo = useRestaurantMenu(restaurantId);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -33,7 +19,7 @@ const RestaurantMenu = () => {
 
   console.log(itemCards);
   return (
-    <div className="menu">
+    <div className="">
       <h1>{name}</h1>
       <h3>Cuisines: {cuisines.join(", ")}</h3>
       <h3>{costForTwoMessage}</h3>
