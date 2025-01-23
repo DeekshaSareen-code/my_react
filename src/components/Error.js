@@ -8,7 +8,15 @@ const Error = () => {
       <h1>Oops!</h1>
       <h2> Its not you its us</h2>
       <h3>
-        {err.status} : {err.statusText}
+        {
+          // @ts-ignore
+          err.status
+        }
+        :{" "}
+        {
+          // @ts-ignore
+          err.statusText
+        }
       </h3>
     </div>
   );
