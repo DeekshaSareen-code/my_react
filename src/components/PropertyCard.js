@@ -9,9 +9,9 @@ const PropertyCard = (props) => {
 
   return (
     <div className="property-container">
-      <div className="property-card">
+      <div className="property-card m-4 p-4 w-[250px] bg-gray-200 rounded-lg hover:bg-gray-100">
         <img
-          className="property-logo"
+          className="property-logo rounded-lg"
           alt="res-logo"
           src={IMG_CDN_URL + cloudinaryImageId}
         />

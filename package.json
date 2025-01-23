@@ -21,9 +21,11 @@
   "homepage": "https://github.com/DeekshaSareen-code/my_react#readme",
   "devDependencies": {
     "parcel": "^2.13.3",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "tailwindcss": "^4.0.0"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^6.28.2"
