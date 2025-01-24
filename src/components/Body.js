@@ -1,5 +1,5 @@
 // @ts-nocheck
-import PropertyCard from "./PropertyCard";
+import RestaurantCard, { withOfferLabel } from "./RestaurantCard";
 import stays from "../utils/mockData";
 import { useEffect, useState } from "react";
 import { SWIGGY_API_URL, SWIGGY_REST_API_PATH } from "../utils/constants";
@@ -27,6 +27,10 @@ const Body = () => {
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  RestaurantCardPromoted = withOfferLabel(RestaurantCard);
+  // avgRating: 4.5;
+  // avgRatingString: "4.5";
 
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) {
@@ -78,7 +82,11 @@ const Body = () => {
             to={"/restaurant/" + restaurant.info.id}
             key={restaurant?.info?.id}
           >
-            <PropertyCard resData={restaurant?.info} />
+            {restaurant.info.avgRating > 4.2 ? (
+              <RestaurantCardPromoted resData={restaurant?.info} />
+            ) : (
+              <RestaurantCard resData={restaurant?.info} />
+            )}
           </Link>
         ))}
       </div>

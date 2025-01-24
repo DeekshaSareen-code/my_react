@@ -2,7 +2,7 @@ import React from "react";
 import { IMG_CDN_URL } from "../utils/constants";
 
 // @ts-nocheck
-const PropertyCard = (props) => {
+const RestaurantCard = (props) => {
   const { resData } = props;
 
   const { cloudinaryImageId, name, avgRating, cuisines, costForTwo } = resData;
@@ -23,5 +23,17 @@ const PropertyCard = (props) => {
     </div>
   );
 };
+export const withOfferLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute m-3 p-2 bg-black text-white rounded-lg">
+          Most Rated
+        </label>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
 
-export default PropertyCard;
+export default RestaurantCard;
