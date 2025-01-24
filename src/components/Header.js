@@ -1,14 +1,15 @@
 // @ts-nocheck
 import { Link } from "react-router-dom";
 import logo from "../assets/images/logo.jpg";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import React from "react";
+import UserContext from "../utils/userContext";
 import useOnlineStatus from "../utils/useOnlineStatus";
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
   const onlineStatus = useOnlineStatus();
-  useEffect(() => {});
+  const { loggedInUser } = useContext(UserContext);
   return (
     <div className="flex justify-between shadow-2xl m-0.5 bg-gray-400">
       <div className="logo-container">
@@ -37,6 +38,7 @@ const Header = () => {
           >
             {btnName}
           </button>
+          <li className="px-4 bold text-black">{loggedInUser}</li>
         </ul>
       </div>
     </div>
