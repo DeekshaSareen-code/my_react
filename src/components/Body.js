@@ -19,7 +19,9 @@ const Body = () => {
     const data = await fetch(
       "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=28.6139298&lng=77.2088282&carousel=true&third_party_vendor=1"
     );
+
     const json = await data.json();
+
     setListOfRestaurant(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
@@ -29,8 +31,6 @@ const Body = () => {
   };
 
   RestaurantCardPromoted = withOfferLabel(RestaurantCard);
-  // avgRating: 4.5;
-  // avgRatingString: "4.5";
 
   const onlineStatus = useOnlineStatus();
   if (onlineStatus === false) {
@@ -45,6 +45,7 @@ const Body = () => {
           <input
             className=" border border-black border-solid m-4 rounded-lg"
             type="text"
+            data-testid="searchInput"
             value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
